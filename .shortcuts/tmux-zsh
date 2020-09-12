@@ -1,0 +1,28 @@
+#!/data/data/com.termux/files/usr/bin/bash
+export LD_PRELOAD=/data/data/com.termux/files/usr/lib/libtermux-exec.so
+if  tmux ls 2>/dev/null | grep termux >/dev/null; then
+	if tmux lsw 2>/dev/null | grep zsh >/dev/null; then
+		tmux run -t termux "tmux select-window -t \" zsh\""
+	else
+		readarray -t array < <(tmux lsw -F "#W")
+		case ${array[@]} in
+			*\ nvim*)
+				tmux run -t termux "tmux new-window -a -t \" nvim\" -n \" zsh\" \"exec zsh\""
+				;;
+			*\ ranger*)
+				tmux run -t termux "tmux new-window -a -t \" ranger\" -n \" zsh\" \"exec zsh\""
+				;;
+			*\ bweetl*)
+				tmux run -t termux "tmux new-window -a -t \" bweetl\" -n \" zsh\" \"exec zsh\""
+				;;
+			*\ newsboat*)
+				tmux run -t termux "tmux new-window -a -t \" newsboat\" -n \" zsh\" \"exec zsh\""
+				;;
+			*)
+				tmux run -t termux "tmux new-window -n \" zsh\" \"exec zsh\""
+				;;
+		esac
+	fi
+else
+	tmux new -A -s termux -n " zsh" "exec zsh"
+fi

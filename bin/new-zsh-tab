@@ -1,0 +1,13 @@
+#!/data/data/com.termux/files/usr/bin/bash
+export LD_PRELOAD=/data/data/com.termux/files/usr/lib/libtermux-exec.so
+if  tmux ls 2>/dev/null | grep termux >/dev/null; then
+	if tmux lsw 2>/dev/null | grep zsh >/dev/null; then
+		tmux run -t termux "tmux select-window -t \" zsh\"; tmux split-window -v -c $1 \"exec zsh\""
+	elif tmux lsw 2>/dev/null | grep nvim >/dev/null; then
+		tmux run -t termux "tmux new-window -a -c $1 -t \" nvim\" -n \" zsh\" \"exec zsh\""
+	else
+		tmux run -t termux "tmux new-window -a -c $1 -t \" ranger\" -n \" zsh\" \"exec zsh\""
+	fi
+else
+	tmux new -A -s termux -n -c $1 " zsh" "exec zsh"
+fi

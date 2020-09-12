@@ -1,0 +1,7 @@
+#!/data/data/com.termux/files/usr/bin/bash
+LAUNCH_FILE=$(cat /data/data/com.termux/files/home/bin/tmux-launcher-list | fzf --pointer "►" --no-bold --color fg:#928374,bg:#282828,hl:#fabd2f,fg+:#d3869b,bg+:#1d2021,hl+:#fabd2f --color info:#83a598,prompt:#bdae93,spinner:#fabd2f,pointer:#d3869b,marker:#fe8019,header:#665c54)
+LAUNCH_FILE=${LAUNCH_FILE:2}
+
+if [ -n "$LAUNCH_FILE" ]; then
+  eval "/data/data/com.termux/files/home/.shortcuts/tmux-$LAUNCH_FILE"
+fi

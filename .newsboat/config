@@ -1,0 +1,49 @@
+bind-key k up
+bind-key j down
+
+bind-key g home
+bind-key G end
+bind-key g home
+bind-key G end
+
+bind-key d pagedown
+bind-key u pageup
+
+auto-reload yes
+browser w3m
+player mpv
+
+notify-always yes
+notify-program "notify-send"
+notify-format "Newsboat\n %n unread articles"
+
+macro f set browser "xdg-open %u > /dev/null 2>&1 &"; open-in-browser ; set browser "/usr/bin/w3m %u"
+
+# articlelist-format "%4i %f%D│ %?T?|%-17T|  ?%t"
+articlelist-format "%D│%?T?|%-17T|  ?%t"
+articlelist-title-format "%N %V - Feed '%T' (%u unread, %t total) - %U"
+feedlist-format "%4i %n %9u│ %t"
+feedlist-title-format "%N %V - Feeds (%u unread, %t total)%?T? - tag `%T'&?"
+
+
+
+highlight article "^(Feed:).*"    color214 color235 
+highlight article "^(Title):.*"       color142 color235 
+highlight article "^(Date|Link|Links):.*" color245 color235 
+highlight article "^\\[[0-9]*\\].*" color245 color235 
+highlight article "^\\[[0-9]*\\].*" color245 color235 
+highlight article "^\\[image [0-9]*]" color245 color235 
+# highlight article "^Received:"      color108 color235 
+
+# color background          white   black
+# color listnormal          white   black
+# color listfocus           yellow  blue   bold
+# color listnormal_unread   magenta black
+# color listfocus_unread    magenta blue   bold
+# color info                yellow  blue   bold
+color info                color175 color237
+color listnormal_unread   color108 black
+color listfocus           color223 color96
+color listfocus_unread    color223 color96
+# color article             white   black
+# color article             white   black

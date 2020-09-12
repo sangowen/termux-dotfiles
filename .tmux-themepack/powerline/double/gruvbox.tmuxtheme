@@ -1,0 +1,125 @@
+#
+# Powerline Double Magenta - Tmux Themepack
+# https://github.com/jimeh/tmux-themepack
+#
+# Inspired by vim-powerline: https://github.com/powerline/powerline
+#
+# Requires terminal to be using a powerline compatible font, find one here:
+# https://github.com/powerline/fonts
+#
+# set-option -g status-position top
+
+# 20200911 greatly modified by sangowen to fit termux
+
+
+# Themepack format options
+set -goq @themepack-window-status-current-format "#W"
+set -goq @themepack-window-status-format "#W"
+
+# Customizable prefixes and suffixes for @themepack-* format options
+set -goq @themepack-window-status-current-prefix ""
+set -goq @themepack-window-status-current-suffix ""
+set -goq @themepack-window-status-prefix ""
+set -goq @themepack-window-status-suffix ""
+
+# Apply prefixes and suffixes to @themepack-* format options
+set -gqF @themepack-window-status-current-format "#{@themepack-window-status-current-prefix}#{@themepack-window-status-current-format}#{@themepack-window-status-current-suffix}"
+set -gqF @themepack-window-status-format "#{@themepack-window-status-prefix}#{@themepack-window-status-format}#{@themepack-window-status-suffix}"
+
+# Powerline color options
+set -goq @powerline-color-main-1 "#b16286"
+set -goq @powerline-color-main-2 "#d3869b"
+set -goq @powerline-color-main-3 colour175
+
+set -goq @powerline-color-black-1 "#1d2021"
+# set -goq @powerline-color-grey-1 colour235
+# set -goq @powerline-color-grey-1 "#262626"
+set -goq @powerline-color-grey-1 "#282828"
+set -goq @powerline-term-bg default
+set -goq @powerline-235 colour235
+set -goq @powerline-color-grey-2 "#3c3836"
+set -goq @powerline-color-grey-3 "#504945"
+
+set -goq @powerline-color-grey-4 "#928374"
+set -goq @powerline-color-grey-5 "#a89984"
+set -goq @powerline-color-grey-6 "#bdae93"
+
+# Powerline Double Override
+
+# Powerline options
+set -goqF @powerline-color-activity-1 "#{@powerline-color-grey-6}"
+set -goqF @powerline-status-bg "#{@powerline-color-grey-1}"
+set -goqF @powerline-status-fg "#{@powerline-color-grey-4}"
+
+# Theme options
+set -goqF @theme-clock-mode-colour "#{@powerline-color-main-1}"
+set -goq  @theme-clock-mode-style 24
+set -goqF @theme-display-panes-active-colour "#{@powerline-color-grey-6}"
+set -goqF @theme-display-panes-colour "#{@powerline-color-grey-1}"
+set -goqF @theme-message-bg "#{@powerline-color-main-1}"
+set -goqF @theme-message-command-bg "#{@powerline-color-main-1}"
+set -goqF @theme-message-command-fg "#{@powerline-color-black-1}"
+set -goqF @theme-message-fg "#{@powerline-color-black-1}"
+set -goqF @theme-mode-bg "#{@powerline-color-main-1}"
+set -goqF @theme-mode-fg "#{@powerline-color-black-1}"
+set -goq  @theme-pane-active-border-bg default
+set -goqF @theme-pane-active-border-fg "#{@powerline-color-main-1}"
+set -goq  @theme-pane-border-bg default
+set -goqF @theme-pane-border-fg "#{@powerline-color-grey-3}"
+set -goqF @theme-status-bg "#{@powerline-term-bg}"
+set -goqF @theme-term-bg "#{@powerline-235}"
+set -goqF @theme-status-fg "#{@powerline-status-fg}"
+set -goq  @theme-status-interval 1
+set -goq  @theme-status-justify centre
+set -goqF @theme-status-left ""
+set -goqF @theme-status-left-bg "#{@powerline-status-left-bg}"
+set -goqF @theme-status-left-fg "#{@powerline-status-left-fg}"
+set -goqF @theme-status-right ""
+set -goqF @theme-status-right-bg "#{@powerline-status-right-bg}"
+set -goqF @theme-status-right-fg "#{@powerline-status-right-fg}"
+set -goq  @theme-status-right-length 150
+set -goqF @theme-window-status-activity-bg "#{@theme-status-bg}"
+set -goqF @theme-window-status-activity-fg "#{@powerline-color-activity-1}"
+set -goq  @theme-window-status-separator ""
+set -goqF @theme-window-status-current-bg "#{@powerline-color-black-1}"
+set -goqF @theme-window-status-current-fg "#{@powerline-color-main-2}"
+set -goqF @theme-window-status-format "  #{@themepack-window-status-format}  "
+set -goqF @theme-window-status-current-format "#[fg=#{@theme-window-status-current-bg},bg=#{@theme-term-bg}]#[fg=#{@theme-window-status-current-fg},nobold,bg=#{@theme-window-status-current-bg}] #{@themepack-window-status-current-format} #[fg=#{@theme-window-status-current-bg},bg=#{@theme-term-bg},nobold]"
+
+# Customizable prefixes and suffixes for @theme-* format options
+set -goq @theme-status-left-prefix ""
+set -goq @theme-status-left-suffix ""
+set -goq @theme-status-right-prefix ""
+set -goq @theme-status-right-suffix ""
+set -goq @theme-window-status-current-prefix ""
+set -goq @theme-window-status-current-suffix ""
+set -goq @theme-window-status-prefix ""
+set -goq @theme-window-status-suffix ""
+
+# Apply prefixes and suffixes to @theme-* format options
+set -gqF @theme-status-left "#{@theme-status-left-prefix}#{@theme-status-left}#{@theme-status-left-suffix}"
+set -gqF @theme-status-right "#{@theme-status-right-prefix}#{@theme-status-right}#{@theme-status-right-suffix}"
+set -gqF @theme-window-status-current-format "#{@theme-window-status-current-prefix}#{@theme-window-status-current-format}#{@theme-window-status-current-suffix}"
+set -gqF @theme-window-status-format "#{@theme-window-status-prefix}#{@theme-window-status-format}#{@theme-window-status-suffix}"
+
+# Apply @theme-* options to Tmux
+set -gF  display-panes-active-colour "#{@theme-display-panes-active-colour}"
+set -gF  display-panes-colour "#{@theme-display-panes-colour}"
+set -gF  message-command-style "fg=#{@theme-message-command-fg},bg=#{@theme-message-command-bg}"
+set -gF  message-style "fg=#{@theme-message-fg},bg=#{@theme-message-bg}"
+set -gF  status-interval "#{@theme-status-interval}"
+set -gF  status-justify "#{@theme-status-justify}"
+set -gF  status-left "#{@theme-status-left}"
+set -gF  status-right "#{@theme-status-right}"
+set -gF  status-right-length "#{@theme-status-right-length}"
+set -gF  status-style "fg=#{@theme-status-fg},bg=#{@theme-status-bg}"
+set -gwF clock-mode-colour "#{@theme-clock-mode-colour}"
+set -gwF clock-mode-style "#{@theme-clock-mode-style}"
+set -gwF mode-style "fg=#{@theme-mode-fg},bg=#{@theme-mode-bg}"
+set -gwF pane-active-border-style "fg=#{@theme-pane-active-border-fg},bg=#{@theme-pane-active-border-bg}"
+set -gwF pane-border-style "fg=#{@theme-pane-border-fg},bg=#{@theme-pane-border-bg}"
+set -gwF window-status-activity-style "fg=#{@theme-window-status-activity-fg},bg=#{@theme-window-status-activity-bg}"
+set -gwF window-status-current-format "#{@theme-window-status-current-format}"
+set -gwF window-status-current-style "fg=#{@theme-window-status-current-fg},bg=#{@theme-window-status-current-bg}"
+set -gwF window-status-format "#{@theme-window-status-format}"
+set -gwF window-status-separator "#{@theme-window-status-separator}"

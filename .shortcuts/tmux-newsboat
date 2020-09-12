@@ -1,0 +1,28 @@
+#!/data/data/com.termux/files/usr/bin/bash
+export LD_PRELOAD=/data/data/com.termux/files/usr/lib/libtermux-exec.so
+if  tmux ls 2>/dev/null | grep termux >/dev/null; then
+	if tmux lsw 2>/dev/null | grep newsboat >/dev/null; then
+		tmux run -t termux "tmux select-window -t \" newsboat\""
+	else
+		readarray -t array < <(tmux lsw -F "#W")
+		case ${array[@]} in
+			*\ bweetl*)
+				tmux run -t termux "tmux new-window -a -t \" bweetl\" -n \" newsboat\" newsboat; tmux swapw -d -s \" newsboat\" -t \" bweetl\""
+				;;
+			*\ ranger*)
+				tmux run -t termux "tmux new-window -a -t \" ranger\" -n \" newsboat\" newsboat; tmux swapw -d -s \" newsboat\" -t \" ranger\""
+				;;
+			*\ nvim*)
+				tmux run -t termux "tmux new-window -a -t \" nvim\" -n \" newsboat\" newsboat; tmux swapw -d -s \" newsboat\" -t \" nvim\""
+				;;
+			*\ zsh*)
+				tmux run -t termux "tmux new-window -a -t \" zsh\" -n \" newsboat\" newsboat; tmux swapw -d -s \" newsboat\" -t \" zsh\""
+				;;
+			*)
+				tmux run -t termux "tmux new-window -n \" newsboat\" newsboat"
+				;;
+		esac
+	fi
+else
+	tmux new -A -s termux -n " newsboat" newsboat
+fi

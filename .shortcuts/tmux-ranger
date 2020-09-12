@@ -1,0 +1,28 @@
+#!/data/data/com.termux/files/usr/bin/bash
+export LD_PRELOAD=/data/data/com.termux/files/usr/lib/libtermux-exec.so
+if  tmux ls 2>/dev/null | grep termux >/dev/null; then
+	if tmux lsw 2>/dev/null | grep ranger >/dev/null; then
+		tmux run -t termux "tmux select-window -t \" ranger\""
+	else
+		readarray -t array < <(tmux lsw -F "#W")
+		case ${array[@]} in
+			*\ nvim*)
+				tmux run -t termux "tmux new-window -a -t \" nvim\" -n \" ranger\" ranger; tmux swapw -d -s \" ranger\" -t \" nvim\""
+				;;
+			*\ zsh*)
+				tmux run -t termux "tmux new-window -a -t \" zsh\" -n \" ranger\" ranger; tmux swapw -d -s \" ranger\" -t \" zsh\""
+				;;
+			*\ bweetl*)
+				tmux run -t termux "tmux new-window -a -t \" bweetl\" -n \" ranger\" ranger"
+				;;
+			*\ newsboat*)
+				tmux run -t termux "tmux new-window -a -t \" newsboat\" -n \" ranger\" ranger"
+				;;
+			*)
+				tmux run -t termux "tmux new-window -n \" ranger\" ranger"
+				;;
+		esac
+	fi
+else
+	tmux new -A -s termux -n " ranger" ranger
+fi

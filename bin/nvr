@@ -1,0 +1,13 @@
+#!/data/data/com.termux/files/usr/bin/bash
+export LD_PRELOAD=/data/data/com.termux/files/usr/lib/libtermux-exec.so
+if  tmux ls 2>/dev/null | grep termux >/dev/null; then
+	if tmux lsw 2>/dev/null | grep nvim >/dev/null; then
+		tmux run -t termux "tmux select-window -t \" nvim\"; tmux send-keys Escape Escape \":tabe $1\" Enter"
+	elif tmux lsw 2>/dev/null | grep zsh >/dev/null; then
+		tmux run -t termux "tmux new-window -a -t \" zsh\" -n \" nvim\" \"zsh -c 'nvim $1 --cmd \\\"redraw!\\\"'\"; tmux swapw -d -s \" nvim\" -t \" zsh\""
+	else
+		tmux run -t termux "tmux new-window -a -t \" ranger\" -n \" nvim\" \"zsh -c 'nvim $1 --cmd \\\"redraw!\\\"'\""
+	fi
+else
+	tmux new -A -s termux -n " nvim" "zsh -c 'nvim $1'"
+fi

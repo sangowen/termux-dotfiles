@@ -1,0 +1,28 @@
+#!/data/data/com.termux/files/usr/bin/bash
+export LD_PRELOAD=/data/data/com.termux/files/usr/lib/libtermux-exec.so
+if  tmux ls 2>/dev/null | grep termux >/dev/null; then
+	if tmux lsw 2>/dev/null | grep nvim >/dev/null; then
+		tmux run -t termux "tmux select-window -t \" nvim\""
+	else
+		readarray -t array < <(tmux lsw -F "#W")
+		case ${array[@]} in
+			*\ ranger*)
+				tmux run -t termux "tmux new-window -a -t \" ranger\" -n \" nvim\" \"zsh -c 'nvim ~/vimwiki/index.md --cmd \\\"redraw!\\\"'\""
+				;;
+			*\ zsh*)
+				tmux run -t termux "tmux new-window -a -t \" zsh\" -n \" nvim\" \"zsh -c 'nvim ~/vimwiki/index.md --cmd \\\"redraw!\\\"'\"; tmux swapw -d -s \" nvim\" -t \" zsh\""
+				;;
+			*\ bweetl*)
+				tmux run -t termux "tmux new-window -a -t \" bweetl\" -n \" nvim\" \"zsh -c 'nvim ~/vimwiki/index.md --cmd \\\"redraw!\\\"'\""
+				;;
+			*\ newsboat*)
+				tmux run -t termux "tmux new-window -a -t \" newsboat\" -n \" nvim\" \"zsh -c 'nvim ~/vimwiki/index.md --cmd \\\"redraw!\\\"'\""
+				;;
+			*)
+				tmux run -t termux "tmux new-window -n \" nvim\" \"zsh -c 'nvim ~/vimwiki/index.md --cmd \\\"redraw!\\\"'\""
+				;;
+		esac
+	fi
+else
+	tmux new -A -s termux -n " nvim" "zsh -c 'nvim ~/vimwiki/index.md --cmd \"redraw!\"'"
+fi
