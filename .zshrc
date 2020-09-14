@@ -159,5 +159,6 @@ source "$fasd_cache"
 unset fasd_cache
 
 # cd
+source /data/data/com.termux/files/home/.fzf/shell/key-bindings.zsh
 
 #zprof
