@@ -13,7 +13,7 @@ newsboat - RSS subscription (news, blog, youtube, reddit, github)
 ```
 ## Usage
 
-1. Use ```tmux-launcher``` in zsh to start
+After [installation](#Install), use ```tmux-launcher``` in zsh to start
 
 ### Major Use Cases
 Personally, I use termux to:
@@ -88,7 +88,7 @@ general:
 1. vi key binding for most of the components.
 
 tmux:
-1. Other than the ```ctrl+b``` default prefix, I set ` as my secondary prefix. The backtick key can then be put in extra-keys.  `$ for me is the keybinging to open tmux-launcher as a side pane 
+1. Other than the ```ctrl+b``` default prefix, I set backtick as my secondary prefix. The backtick key can then be put in extra-keys.
 
 ranger:
 1. s for zsh in current folder
