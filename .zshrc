@@ -71,7 +71,8 @@ ZSH_THEME="gruvbox"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fast-syntax-highlighting zle-vi-visual zsh-autosuggestions)
+# plugins=(fast-syntax-highlighting zle-vi-visual zsh-autosuggestions)
+plugins=(fast-syntax-highlighting zsh-autosuggestions)
 #plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -159,5 +160,6 @@ source "$fasd_cache"
 unset fasd_cache
 
 # cd
+source /data/data/com.termux/files/home/.fzf/shell/key-bindings.zsh
 
 #zprof
