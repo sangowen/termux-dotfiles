@@ -76,7 +76,7 @@ If you already have any of the dotfiles, just backup or merge the files before c
 ```
 git clone https://github.com/sangowen/termux-dotfiles
 cd termux-dotfiles/
-cp -r .config .fzf .newsboat .shortcuts .termux .tmux-themepack .tmux.conf .zshrc bin ../
+cp -r .config .fzf .newsboat .shortcuts .termux .tmux-themepack .tmux.conf .zshrc .profile bin ../
 
 cp .oh-my-zsh/themes/gruvbox.zsh-theme ~/.oh-my-zsh/themes/gruvbox.zsh-theme 
 cd data/data/com.termux/files/usr/etc
