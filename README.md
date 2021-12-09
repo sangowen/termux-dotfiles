@@ -93,7 +93,7 @@ tmux:
 ranger:
 1. s for zsh in current folder
 2. → or <CR> on files to edit in neovim
-3. z<Space> is fasd, jump around recently/frequently visited folers
+3. z<Space> is fasd, jump around recently/frequently visited folders
 4. bat for file preview
 
 zsh:
